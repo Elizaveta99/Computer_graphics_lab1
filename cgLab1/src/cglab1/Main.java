@@ -9,6 +9,7 @@ import cglab1.Model.HSL;
 import cglab1.Model.LAB;
 import cglab1.Model.RGB;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Hashtable;
 import javax.swing.JColorChooser;
@@ -60,7 +61,6 @@ public class Main extends javax.swing.JFrame {
         jSlider7.setPaintLabels(true);
         jSlider7.setLabelTable(position);
         position = new Hashtable();
-        // or from -100 to 100 ?
         position.put(-128, new JLabel("-128"));
         position.put(-64, new JLabel("-64"));
         position.put(0, new JLabel("0"));
@@ -91,6 +91,9 @@ public class Main extends javax.swing.JFrame {
             jSlider6.setValue(((Integer)hsl.getS()));
             jSlider4.setValue(((Integer)hsl.getL()));
             
+            Color color = new Color(Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField5.getText()), Integer.parseInt(jTextField6.getText()));
+            jTextField11.setBackground(color);
+            
             //Change LAB
             LAB lab = rgb.toLAB();          
             jTextField7.setText(((Integer)lab.getL()).toString());
@@ -100,6 +103,8 @@ public class Main extends javax.swing.JFrame {
             jSlider7.setValue(((Integer)lab.getL()));
             jSlider8.setValue(((Integer)lab.getA()));
             jSlider9.setValue(((Integer)lab.getB()));
+            
+            jTextField12.setBackground(color);
             
         }
         catch (NumberFormatException nfe) {
@@ -124,6 +129,9 @@ public class Main extends javax.swing.JFrame {
             jSlider2.setValue(((Integer)rgb.getGi()));
             jSlider3.setValue(((Integer)rgb.getBi()));
             
+            Color color = new Color(Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField5.getText()), Integer.parseInt(jTextField6.getText()));
+            jTextField10.setBackground(color);
+            
             //Change LAB
             LAB lab = hsl.toLAB();          
             jTextField7.setText(((Integer)lab.getL()).toString());
@@ -133,6 +141,8 @@ public class Main extends javax.swing.JFrame {
             jSlider7.setValue(((Integer)lab.getL()));
             jSlider8.setValue(((Integer)lab.getA()));
             jSlider9.setValue(((Integer)lab.getB()));
+            
+            jTextField12.setBackground(color);
             
         }
         catch (NumberFormatException nfe) {
@@ -157,6 +167,9 @@ public class Main extends javax.swing.JFrame {
             jSlider2.setValue(((Integer)rgb.getGi()));
             jSlider3.setValue(((Integer)rgb.getBi()));
             
+            Color color = new Color(Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField5.getText()), Integer.parseInt(jTextField6.getText()));
+            jTextField10.setBackground(color);
+            
             //Change HSL
             HSL hsl = lab.toHSL();          
             jTextField1.setText(((Integer)hsl.getH()).toString());
@@ -166,6 +179,8 @@ public class Main extends javax.swing.JFrame {
             jSlider5.setValue(((Integer)hsl.getH()));
             jSlider6.setValue(((Integer)hsl.getS()));
             jSlider4.setValue(((Integer)hsl.getL()));
+            
+            jTextField11.setBackground(color);
             
         }
         catch (NumberFormatException nfe) {
@@ -220,9 +235,16 @@ public class Main extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jColorChooser1 = new javax.swing.JColorChooser();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 746));
+        setTitle("Translating between color models application");
+        setPreferredSize(new java.awt.Dimension(1135, 740));
+        setResizable(false);
 
         jLabel1.setText("R");
 
@@ -231,51 +253,21 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setText("B");
 
         jTextField4.setText("0");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         jTextField5.setText("0");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
 
         jTextField6.setText("0");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
 
         jSlider1.setMajorTickSpacing(100);
         jSlider1.setMaximum(255);
         jSlider1.setMinorTickSpacing(25);
         jSlider1.setValue(128);
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
-            }
-        });
 
         jSlider2.setMaximum(255);
         jSlider2.setValue(128);
-        jSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider2StateChanged(evt);
-            }
-        });
 
         jSlider3.setMaximum(255);
         jSlider3.setValue(128);
-        jSlider3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider3StateChanged(evt);
-            }
-        });
 
         jLabel4.setText("H");
 
@@ -284,45 +276,13 @@ public class Main extends javax.swing.JFrame {
         jLabel6.setText("L");
 
         jTextField1.setText("0");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setText("0");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jTextField3.setText("0");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
-        jSlider4.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider4StateChanged(evt);
-            }
-        });
 
         jSlider5.setMaximum(360);
         jSlider5.setValue(180);
-        jSlider5.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider5StateChanged(evt);
-            }
-        });
-
-        jSlider6.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider6StateChanged(evt);
-            }
-        });
 
         jLabel7.setText("L");
 
@@ -331,49 +291,18 @@ public class Main extends javax.swing.JFrame {
         jLabel9.setText("B");
 
         jTextField7.setText("0");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
 
         jTextField8.setText("0");
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
 
         jTextField9.setText("0");
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-
-        jSlider7.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider7StateChanged(evt);
-            }
-        });
 
         jSlider8.setMaximum(128);
         jSlider8.setMinimum(-128);
         jSlider8.setValue(0);
-        jSlider8.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider8StateChanged(evt);
-            }
-        });
 
         jSlider9.setMaximum(128);
         jSlider9.setMinimum(-128);
         jSlider9.setValue(0);
-        jSlider9.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider9StateChanged(evt);
-            }
-        });
 
         info.setEditable(false);
         info.setColumns(20);
@@ -443,6 +372,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setText("Common palette, use only first tab to choose color");
+
+        jTextField10.setBackground(new java.awt.Color(0, 0, 0));
+
+        jTextField11.setBackground(new java.awt.Color(0, 0, 0));
+
+        jTextField12.setBackground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -502,12 +439,21 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(87, 87, 87)
                                 .addComponent(jButton9)))))
-                .addGap(76, 76, 76)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(156, Short.MAX_VALUE))
+                    .addComponent(jButton3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,43 +471,52 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addComponent(jButton4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(7, 7, 7)
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSlider5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSlider6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSlider4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton8))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addComponent(jButton8))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSlider7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -569,64 +524,35 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jSlider8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSlider9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSlider9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFrame frame = new JFrame("Choose RGB color panel");
-        frame.setSize(new Dimension(600, 400));
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(new BorderLayout());
         
-        JColorChooser colorChooser = new JColorChooser();
-        frame.add(colorChooser, BorderLayout.CENTER);
+        info.setText("");
+        Color color = jColorChooser1.getColor();
+        jTextField10.setBackground(color);
         
-        frame.setVisible(true);
-        frame.pack();
+        jTextField4.setText(((Integer)color.getRed()).toString());
+        jTextField5.setText(((Integer)color.getGreen()).toString());
+        jTextField6.setText(((Integer)color.getBlue()).toString());
         
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JFrame frame = new JFrame("Choose HSL color panel");
-        frame.setSize(new Dimension(600, 400));
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(new BorderLayout());
-        
-        JColorChooser colorChooser = new JColorChooser();
-        frame.add(colorChooser, BorderLayout.CENTER);
-        
-        frame.setVisible(true);
-        frame.pack();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JFrame frame = new JFrame("Choose LAB color panel");
-        frame.setSize(new Dimension(600, 400));
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(new BorderLayout());
-        
-        JColorChooser colorChooser = new JColorChooser();
-        frame.add(colorChooser, BorderLayout.CENTER);
-        
-        frame.setVisible(true);
-        frame.pack();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             jSlider1.setValue(Integer.parseInt(jTextField4.getText()));
             jSlider2.setValue(Integer.parseInt(jTextField5.getText()));
@@ -638,202 +564,18 @@ public class Main extends javax.swing.JFrame {
             jTextField6.setText("");
         }
         changeAllModelsFromRGB();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-//        try {
-//            jSlider1.setValue(Integer.parseInt(jTextField4.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField4.setText("");
-//        }
-//        changeAllModelsFromRGB();
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-//        try {
-//            jSlider2.setValue(Integer.parseInt(jTextField5.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField5.setText("");
-//        }
-//        changeAllModelsFromRGB();
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-//        try {
-//            jSlider3.setValue(Integer.parseInt(jTextField6.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField6.setText("");
-//        }
-//        changeAllModelsFromRGB();
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-//        try {
-//            jTextField4.setText(((Integer)jSlider1.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromRGB();
-    }//GEN-LAST:event_jSlider1StateChanged
-
-    private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
-//        try {
-//            jTextField5.setText(((Integer)jSlider2.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromRGB();
-    }//GEN-LAST:event_jSlider2StateChanged
-
-    private void jSlider3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider3StateChanged
-//        try {
-//            jTextField6.setText(((Integer)jSlider3.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromRGB();
-    }//GEN-LAST:event_jSlider3StateChanged
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-//        try {
-//            jSlider5.setValue(Integer.parseInt(jTextField1.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField1.setText("");
-//        }
-//        changeAllModelsFromHSL();
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-//        try {
-//            jSlider6.setValue(Integer.parseInt(jTextField2.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField2.setText("");
-//        }
-//        changeAllModelsFromHSL();
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-//        try {
-//            jSlider4.setValue(Integer.parseInt(jTextField3.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField3.setText("");
-//        }
-//        changeAllModelsFromHSL();
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jSlider5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider5StateChanged
-//        try {
-//            jTextField1.setText(((Integer)jSlider5.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromHSL();
-    }//GEN-LAST:event_jSlider5StateChanged
-
-    private void jSlider6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider6StateChanged
-//        try {
-//            jTextField2.setText(((Integer)jSlider6.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromHSL();
-    }//GEN-LAST:event_jSlider6StateChanged
-
-    private void jSlider4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider4StateChanged
-//        try {
-//            jTextField3.setText(((Integer)jSlider4.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromHSL();
-    }//GEN-LAST:event_jSlider4StateChanged
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-//        try {
-//            jSlider7.setValue(Integer.parseInt(jTextField7.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField7.setText("");
-//        }
-//        changeAllModelsFromLAB();
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-//        try {
-//            jSlider8.setValue(Integer.parseInt(jTextField8.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField8.setText("");
-//        }
-//        changeAllModelsFromLAB();
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-//        try {
-//            jSlider9.setValue(Integer.parseInt(jTextField9.getText()));
-//        }
-//        catch (NumberFormatException nfe) {
-//            jTextField9.setText("");
-//        }
-//        changeAllModelsFromLAB();
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
-    private void jSlider7StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider7StateChanged
-//        try {
-//            jTextField7.setText(((Integer)jSlider7.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromLAB();
-    }//GEN-LAST:event_jSlider7StateChanged
-
-    private void jSlider8StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider8StateChanged
-//        try {
-//            jTextField8.setText(((Integer)jSlider8.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromLAB();
-    }//GEN-LAST:event_jSlider8StateChanged
-
-    private void jSlider9StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider9StateChanged
-//        try {
-//            jTextField9.setText(((Integer)jSlider9.getValue()).toString());
-//        }
-//        catch (NumberFormatException nfe) {
-//            
-//        }
-//        changeAllModelsFromLAB();
-    }//GEN-LAST:event_jSlider9StateChanged
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        try {
-            jTextField4.setText(((Integer)jSlider1.getValue()).toString());
-            jTextField5.setText(((Integer)jSlider2.getValue()).toString());
-            jTextField6.setText(((Integer)jSlider3.getValue()).toString());
-        }
-        catch (NumberFormatException nfe) {
-            
-        }
-        changeAllModelsFromRGB();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        info.setText("");      
+        Color color = jColorChooser1.getColor();
+        jTextField11.setBackground(color);
+        
+        jTextField1.setText(((Integer)color.getRed()).toString());
+        jTextField2.setText(((Integer)color.getGreen()).toString());
+        jTextField3.setText(((Integer)color.getBlue()).toString());
+        
         try {
             jSlider5.setValue(Integer.parseInt(jTextField1.getText()));
             jSlider6.setValue(Integer.parseInt(jTextField2.getText()));
@@ -845,21 +587,18 @@ public class Main extends javax.swing.JFrame {
             jTextField3.setText("");
         }
         changeAllModelsFromHSL();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        try {
-            jTextField1.setText(((Integer)jSlider5.getValue()).toString());
-            jTextField2.setText(((Integer)jSlider6.getValue()).toString());
-            jTextField3.setText(((Integer)jSlider4.getValue()).toString());
-        }
-        catch (NumberFormatException nfe) {
-            
-        }
-        changeAllModelsFromHSL();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        info.setText("");
+        Color color = jColorChooser1.getColor();
+        jTextField12.setBackground(color);
+        
+        jTextField7.setText(((Integer)color.getRed()).toString());
+        jTextField8.setText(((Integer)color.getGreen()).toString());
+        jTextField9.setText(((Integer)color.getBlue()).toString());
+        
         try {
             jSlider7.setValue(Integer.parseInt(jTextField7.getText()));
             jSlider8.setValue(Integer.parseInt(jTextField8.getText()));
@@ -871,13 +610,104 @@ public class Main extends javax.swing.JFrame {
             jTextField9.setText("");
         }
         changeAllModelsFromLAB();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        info.setText("");
+        try {
+            jSlider1.setValue(Integer.parseInt(jTextField4.getText()));
+            jSlider2.setValue(Integer.parseInt(jTextField5.getText()));
+            jSlider3.setValue(Integer.parseInt(jTextField6.getText()));
+            Color color = new Color(Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField5.getText()), Integer.parseInt(jTextField6.getText()));
+            jTextField10.setBackground(color);
+        }
+        catch (NumberFormatException nfe) {
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+        }
+        
+        changeAllModelsFromRGB();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        
+        info.setText("");
+        try {
+            jTextField4.setText(((Integer)jSlider1.getValue()).toString());
+            jTextField5.setText(((Integer)jSlider2.getValue()).toString());
+            jTextField6.setText(((Integer)jSlider3.getValue()).toString());
+            Color color = new Color(Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField5.getText()), Integer.parseInt(jTextField6.getText()));
+            jTextField10.setBackground(color);
+        }
+        catch (NumberFormatException nfe) {
+            
+        }
+        changeAllModelsFromRGB();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        
+        info.setText("");
+        try {
+            jSlider5.setValue(Integer.parseInt(jTextField1.getText()));
+            jSlider6.setValue(Integer.parseInt(jTextField2.getText()));
+            jSlider4.setValue(Integer.parseInt(jTextField3.getText()));
+            Color color = new Color(Integer.parseInt(jTextField1.getText()), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()));
+            jTextField11.setBackground(color);
+        }
+        catch (NumberFormatException nfe) {
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+        }
+        changeAllModelsFromHSL();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        
+        info.setText("");
+        try {
+            jTextField1.setText(((Integer)jSlider5.getValue()).toString());
+            jTextField2.setText(((Integer)jSlider6.getValue()).toString());
+            jTextField3.setText(((Integer)jSlider4.getValue()).toString());
+            Color color = new Color(Integer.parseInt(jTextField1.getText()), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()));
+            jTextField11.setBackground(color);
+        }
+        catch (NumberFormatException nfe) {
+            
+        }
+        changeAllModelsFromHSL();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        
+        info.setText("");
+        try {
+            jSlider7.setValue(Integer.parseInt(jTextField7.getText()));
+            jSlider8.setValue(Integer.parseInt(jTextField8.getText()));
+            jSlider9.setValue(Integer.parseInt(jTextField9.getText()));
+            Color color = new Color(Integer.parseInt(jTextField7.getText()), Integer.parseInt(jTextField8.getText()), Integer.parseInt(jTextField9.getText()));
+            jTextField12.setBackground(color);
+        }
+        catch (NumberFormatException nfe) {
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+        }
+        changeAllModelsFromLAB();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        
+        info.setText("");
         try {
             jTextField7.setText(((Integer)jSlider7.getValue()).toString());
             jTextField8.setText(((Integer)jSlider8.getValue()).toString());
             jTextField9.setText(((Integer)jSlider9.getValue()).toString());
+            Color color = new Color(Integer.parseInt(jTextField7.getText()), Integer.parseInt(jTextField8.getText()), Integer.parseInt(jTextField9.getText()));
+            jTextField12.setBackground(color);
         }
         catch (NumberFormatException nfe) {
             
@@ -931,7 +761,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -951,6 +783,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSlider jSlider8;
     private javax.swing.JSlider jSlider9;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

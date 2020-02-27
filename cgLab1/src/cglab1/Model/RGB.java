@@ -30,6 +30,30 @@ public class RGB {
     
     public RGB(double rd, double gd, double bd)
     {
+        if (rd < 0) {
+            rd = 0;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
+        if (rd > 255) {
+            rd = 255;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
+        if (gd < 0) {
+            gd = 0;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
+        if (gd > 255) {
+            gd = 255;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
+        if (bd < 0) {
+            bd = 0;
+            cglab1.Main.info.setText("B coordinate is out of bounds");
+        }
+        if (bd > 255) {
+            bd = 255;
+            cglab1.Main.info.setText("B coordinate is out of bounds");
+        }
         r = rd;
         g = gd;
         b = bd;
@@ -37,20 +61,68 @@ public class RGB {
     
     public RGB(int rd, int gd, int bd)
     {
+        if (rd < 0) {
+            rd = 0;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
+        if (rd > 255) {
+            rd = 255;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
+        if (gd < 0) {
+            gd = 0;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
+        if (gd > 255) {
+            gd = 255;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
+        if (bd < 0) {
+            bd = 0;
+            cglab1.Main.info.setText("B coordinate from RGB is out of bounds");
+        }
+        if (bd > 255) {
+            bd = 255;
+            cglab1.Main.info.setText("B coordinate from RGB is out of bounds");
+        }
         ri = rd;
         gi = gd;
         bi = bd;
     }
     
     public void setRi(int rd) {
+        if (rd < 0) {
+            rd = 0;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
+        if (rd > 255) {
+            rd = 255;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
         ri = rd;
     }
     
     public void setGi(int gd) {
+        if (gd < 0) {
+            gd = 0;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
+        if (gd > 255) {
+            gd = 255;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
         gi = gd;
     }
     
     public void setBi(int bd) {
+        if (bd < 0) {
+            bd = 0;
+            cglab1.Main.info.setText("B coordinate from RGB is out of bounds");
+        }
+        if (bd > 255) {
+            bd = 255;
+            cglab1.Main.info.setText("B coordinate from RGB is out of bounds");
+        }
         bi = bd;
     }
     
@@ -67,14 +139,38 @@ public class RGB {
     }
     
     public void setR(int rd) {
+        if (rd < 0) {
+            rd = 0;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
+        if (rd > 255) {
+            rd = 255;
+            cglab1.Main.info.setText("R coordinate is out of bounds");
+        }
         r = rd / 255.0;
     }
     
     public void setG(int gd) {
+        if (gd < 0) {
+            gd = 0;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
+        if (gd > 255) {
+            gd = 255;
+            cglab1.Main.info.setText("G coordinate is out of bounds");
+        }
         g = gd / 255.0;
     }
     
     public void setB(int bd) {
+        if (bd < 0) {
+            bd = 0;
+            cglab1.Main.info.setText("B coordinate from RGB is out of bounds");
+        }
+        if (bd > 255) {
+            bd = 255;
+            cglab1.Main.info.setText("B coordinate from RGB is out of bounds");
+        }
         b = bd / 255.0;
     }
     
@@ -101,9 +197,7 @@ public class RGB {
     }
     
     public HSL toHSL() {        
-        
-        // проверить, точно ли дробные надо
-        
+                
         double max = Math.max(r, Math.max(r, b));
         double min = Math.min(r, Math.min(r, b));
         double delta = max - min;

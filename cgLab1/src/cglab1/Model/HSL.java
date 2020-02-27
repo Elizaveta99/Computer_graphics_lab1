@@ -29,6 +29,30 @@ public class HSL {
     
     public HSL(int hd, double sd, double ld)
     {
+        if (hd < 0) {
+            hd = 0;
+            cglab1.Main.info.setText("H coordinate is out of bounds");
+        }
+        if (hd > 360) {
+            hd = 360;
+            cglab1.Main.info.setText("H coordinate is out of bounds");
+        }
+        if (sd < 0) {
+            sd = 0;
+            cglab1.Main.info.setText("S coordinate is out of bounds");
+        }
+        if (sd > 100) {
+            sd = 100;
+            cglab1.Main.info.setText("S coordinate is out of bounds");
+        }
+        if (ld < 0) {
+            ld = 0;
+            cglab1.Main.info.setText("L coordinate from HSL is out of bounds");
+        }
+        if (ld > 100) {
+            ld = 100;
+            cglab1.Main.info.setText("L coordinate from HSL is out of bounds");
+        }
         h = hd;
         s = sd;
         l = ld;
@@ -53,15 +77,6 @@ public class HSL {
         return (int)l;
     }
     
-//    public HSL(HSL hsl)
-//    {
-//        hTextField.setText(hsl.h.toString());
-//        sTextField = st;
-//        lTextField = lt;
-//        hSlider = hs;
-//        sSlider = ss;
-//        lSlider = ls;
-//    }
     
     public HSL(JTextField ht, JTextField st, JTextField lt, JSlider hs, JSlider ss, JSlider ls)
     {

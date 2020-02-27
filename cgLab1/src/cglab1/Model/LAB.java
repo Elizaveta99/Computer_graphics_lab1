@@ -26,6 +26,30 @@ public class LAB {
     
     public LAB(double ld, double ad, double bd)
     {
+        if (ld < 0) {
+            ld = 0;
+            cglab1.Main.info.setText("L coordinate from LAB is out of bounds");
+        }
+        if (ld > 100) {
+            ld = 100;
+            cglab1.Main.info.setText("L coordinate from LAB is out of bounds");
+        }
+        if (ad < -128) {
+            ad = -128;
+            cglab1.Main.info.setText("A coordinate is out of bounds");
+        }
+        if (ad > 128) {
+            ad = 128;
+            cglab1.Main.info.setText("A coordinate is out of bounds");
+        }
+        if (bd < -128) {
+            bd = -128;
+            cglab1.Main.info.setText("B coordinate from LAB is out of bounds");
+        }
+        if (bd > 128) {
+            bd = 128;
+            cglab1.Main.info.setText("B coordinate from LAB is out of bounds");
+        }
         l = ld;
         a = ad;
         b = bd;
